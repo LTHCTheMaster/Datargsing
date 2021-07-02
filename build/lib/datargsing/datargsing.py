@@ -8,6 +8,12 @@ class datargsing_Error:
         if not debug:
             exit()
 
+class datargsing_Complete:
+    def __init__(self, debug: bool = False):
+        if debug:
+            print('\n Complete \n')
+            sleep(1)
+
 class JSON_Manage:
     def __init__(self):
         pass
@@ -18,5 +24,23 @@ class JSON_Manage:
                 return eval(open(file=path, mode='r').read().replace('true', 'True').replace('false', 'False'))
             except:
                 return datargsing_Error(error_content='The file doesn\'t exist', debug=debug)
+        else:
+            return datargsing_Error(error_content='The file isn\'t a JSON file (extension check)', debug=debug)
+    
+    def set_to_file(self, path: str, content: dict, debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+        if path.endswith('.json'):
+            try:
+                cur = open(file=path, mode='w')
+                cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+                cur.close()
+                return datargsing_Complete(debug=debug)
+            except:
+                try:
+                    cur = open(file=path, mode='xw')
+                    cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+                    cur.close()
+                    return datargsing_Complete(debug=debug)
+                except:
+                    return datargsing_Error(error_content='Can\'t create the file', debug=debug)
         else:
             return datargsing_Error(error_content='The file isn\'t a JSON file (extension check)', debug=debug)
