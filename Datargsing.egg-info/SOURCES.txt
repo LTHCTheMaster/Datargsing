@@ -1,0 +1,8 @@
+README.md
+setup.py
+Datargsing.egg-info/PKG-INFO
+Datargsing.egg-info/SOURCES.txt
+Datargsing.egg-info/dependency_links.txt
+Datargsing.egg-info/top_level.txt
+datargsing/__init__.py
+datargsing/datargsing.py
