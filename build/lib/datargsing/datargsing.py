@@ -15,8 +15,7 @@ class JSON_Manage:
     def get_from_file(self, path: str, debug: bool = False) -> Union[dict, datargsing_Error]:
         if path.endswith('.json'):
             try:
-                temp = eval(open(file=path, mode='r').read().replace('true', 'True').replace('false', 'False'))
-                return temp
+                return eval(open(file=path, mode='r').read().replace('true', 'True').replace('false', 'False'))
             except:
                 return datargsing_Error(error_content='The file doesn\'t exist', debug=debug)
         else:
