@@ -44,3 +44,28 @@ class JSON_Manage:
                     return datargsing_Error(error_content='Can\'t create the file', debug=debug)
         else:
             return datargsing_Error(error_content='The file isn\'t a JSON file (extension check)', debug=debug)
+    
+    def get_from_file_like_json(self, path: str, debug: bool = False) -> Union[dict, datargsing_Error]:
+        try:
+            temp = eval(open(file=path, mode='r').read().replace('true', 'True').replace('false', 'False'))
+            if type(temp) == dict:
+                return temp
+            else:
+                return datargsing_Error(error_content='The file isn\'t a JSON like file', debug=debug)
+        except:
+            return datargsing_Error(error_content='The file doesn\'t exist', debug=debug)
+    
+    def set_to_file_like_json(self, path: str, content: dict, debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+        try:
+            cur = open(file=path, mode='w')
+            cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+            cur.close()
+            return datargsing_Complete(debug=debug)
+        except:
+            try:
+                cur = open(file=path, mode='xw')
+                cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+                cur.close()
+                return datargsing_Complete(debug=debug)
+            except:
+                return datargsing_Error(error_content='Can\'t create the file', debug=debug)
