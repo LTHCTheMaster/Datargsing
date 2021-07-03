@@ -115,3 +115,39 @@ class CSV_Manage:
                     return datargsing_Error(error_content='Can\'t create the file', debug=debug)
         else:
             return datargsing_Error(error_content='The file isn\'t a CSV file (extension check)', debug=debug)
+        
+    def get_from_file_like_csv(self, path: str, separator: str = ',', debug: bool = False) -> Union[tuple, datargsing_Error]:
+        """
+        return tuple (descriptors/entries, values) if completion
+        """
+        try:
+            file = open(file=path, mode='r')
+            descriptors = file.readline().rstrip().split(separator)
+            values = [i.rstrip().split(separator) for i in file.readlines()]
+            content = (descriptors, values)
+            return content
+        except:
+            return datargsing_Error(error_content='The file doesn\'t exist', debug=debug)
+    
+    def set_to_file_like_csv(self, path: str, content: tuple, separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+        try:
+            descriptors = separator.join(content[0])
+            cur = open(file=path, mode='w')
+            cur.write(descriptors)
+            for i in content[1]:
+                values_line = '\n' + separator.join(i)
+                cur.write(values_line)
+            cur.close()
+            return datargsing_Complete(debug=debug)
+        except:
+            try:
+                descriptors = separator.join(content[0])
+                cur = open(file=path, mode='w')
+                cur.write(descriptors)
+                for i in content[1]:
+                    values_line = '\n' + separator.join(i)
+                    cur.write(values_line)
+                cur.close()
+                return datargsing_Complete(debug=debug)
+            except:
+                return datargsing_Error(error_content='Can\'t create the file', debug=debug)
