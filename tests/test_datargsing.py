@@ -3,6 +3,7 @@ from datargsing import datargsing
 def test_datargsing():
     jm = datargsing.JSON_Manage()
     cm = datargsing.CSV_Manage()
+    cjc = datargsing.CSV_JSON_Convert()
 
     assert type(jm.get_from_file('./tests/json/a.json', True)) == dict
     assert type(jm.get_from_file('b.json', True)) == datargsing.datargsing_Error
@@ -29,3 +30,7 @@ def test_datargsing():
     content = cm.get_from_file_like_csv('./tests/csv_like/a.csvlike', ',', True)
     assert type(cm.set_to_file_like_csv('./tests/csv_like/b.csvlike', content, ',', True)) == datargsing.datargsing_Complete
     assert type(cm.set_to_file_like_csv('./tests/csv_like/c.csvlike', content, ',', True)) == datargsing.datargsing_Complete
+
+    assert type(cjc.csv_json('./tests/csv/a.csv', './tests/json/csv.json', ',', True)) == datargsing.datargsing_Complete
+    assert type(cjc.csv_json('./tests/csv/a.csv', './tests/json/csv.jso', ',', True)) == datargsing.datargsing_Error
+    assert type(cjc.csv_json('./tests/csv/a.csvv', './tests/json/csv.json', ',', True)) == datargsing.datargsing_Error

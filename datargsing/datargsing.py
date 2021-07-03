@@ -151,3 +151,24 @@ class CSV_Manage:
                 return datargsing_Complete(debug=debug)
             except:
                 return datargsing_Error(error_content='Can\'t create the file', debug=debug)
+
+class CSV_JSON_Convert:
+    def __init__(self):
+        self.jm = JSON_Manage()
+        self.cm = CSV_Manage()
+
+    def csv_json(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+        csv_content = self.cm.get_from_file(path=path_csv, separator=csv_separator, debug=debug)
+        if type(csv_content) == tuple:
+            json_format = {}
+            for i in range(len(csv_content[0])):
+                json_format[csv_content[0][i]] = []
+                for j in csv_content[1]:
+                    json_format[csv_content[0][i]].append(j[i])
+            json_r = self.jm.set_to_file(path=path_json, content=json_format, debug=debug)
+            if type(json_r) == datargsing_Complete:
+                return datargsing_Complete(debug=debug)
+            else:
+                return datargsing_Error('Cannot read correct parameters', debug=debug)
+        else:
+            return datargsing_Error('Cannot read correct parameters', debug=debug)
