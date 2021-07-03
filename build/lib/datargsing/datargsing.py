@@ -93,21 +93,21 @@ class CSV_Manage:
     def set_to_file(self, path: str, content: tuple, separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
         if path.endswith('.csv'):
             try:
-                descriptors = separator.join(content[0]) + '\n'
+                descriptors = separator.join(content[0])
                 cur = open(file=path, mode='w')
                 cur.write(descriptors)
                 for i in content[1]:
-                    values_line = separator.join(i) + '\n'
+                    values_line = '\n' + separator.join(i)
                     cur.write(values_line)
                 cur.close()
                 return datargsing_Complete(debug=debug)
             except:
                 try:
-                    descriptors = separator.join(content[0]) + '\n'
+                    descriptors = separator.join(content[0])
                     cur = open(file=path, mode='w')
                     cur.write(descriptors)
                     for i in content[1]:
-                        values_line = separator.join(i) + '\n'
+                        values_line = '\n' + separator.join(i)
                         cur.write(values_line)
                     cur.close()
                     return datargsing_Complete(debug=debug)
