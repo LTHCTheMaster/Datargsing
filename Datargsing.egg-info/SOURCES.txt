@@ -1,4 +1,5 @@
 README.md
+setup.cfg
 setup.py
 Datargsing.egg-info/PKG-INFO
 Datargsing.egg-info/SOURCES.txt

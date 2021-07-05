@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 setup(
     name='Datargsing',
     packages=find_packages(include=['datargsing'], exclude=['tests']),
-    version='0.1.0',
+    version='0.1.1',
     description='A Data management and manipulation library',
     author='LTHC The Master (CHOSSY Lucas)',
     license='MIT',
