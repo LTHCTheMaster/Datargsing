@@ -42,3 +42,21 @@ def test_datargsing():
     assert(type(cjc.json_csv_get_set('./tests/json/for_csv.json', './tests/csv/json.csvv', ',', True))) == datargsing.datargsing_Error
     assert(type(cjc.json_csv_get('./tests/json/for_csv.json', True))) == tuple
     assert(type(cjc.json_csv_get('./tests/json/for_csv.jso', True))) == datargsing.datargsing_Error
+
+    assert type(cjc.csv_like_json_get_set('./tests/csv_like/a.csvlike', './tests/json/csv.json', ',', True)) == datargsing.datargsing_Complete
+    assert type(cjc.csv_like_json_get_set('./tests/csv_like/a.csvv', './tests/json/csv.json', ',', True)) == datargsing.datargsing_Error
+    assert type(cjc.csv_json_like_get_set('./tests/csv/a.csv', './tests/json_like/csv.jsonlike', ',', True)) == datargsing.datargsing_Complete
+    assert type(cjc.csv_json_like_get_set('./tests/csv/a.csvv', './tests/json_like/csv.jsonlike', ',', True)) == datargsing.datargsing_Error
+    assert type(cjc.csv_like_json_like_get_set('./tests/csv_like/a.csvlike', './tests/json_like/csv.jsonlike', ',', True)) == datargsing.datargsing_Complete
+    assert type(cjc.csv_like_json_like_get_set('./tests/csv_like/a.csvv', './tests/json_like/csv.jsonlike', ',', True)) == datargsing.datargsing_Error
+    assert type(cjc.csv_like_json_get('./tests/csv_like/a.csvlike', ',', True)) == dict
+    assert type(cjc.csv_like_json_get('./tests/csv_like/a.csvv', ',', True)) == datargsing.datargsing_Error
+
+    assert(type(cjc.json_like_csv_get_set('./tests/json_like/for_csv.jsonlike', './tests/csv/json.csv', ',', True))) == datargsing.datargsing_Complete
+    assert(type(cjc.json_like_csv_get_set('./tests/json_like/for_csv.jso', './tests/csv/json.csv', ',', True))) == datargsing.datargsing_Error
+    assert(type(cjc.json_csv_like_get_set('./tests/json/for_csv.json', './tests/csv_like/json.csvlike', ',', True))) == datargsing.datargsing_Complete
+    assert(type(cjc.json_csv_like_get_set('./tests/json/for_csv.jso', './tests/csv_like/json.csvlike', ',', True))) == datargsing.datargsing_Error
+    assert(type(cjc.json_like_csv_like_get_set('./tests/json_like/for_csv.jsonlike', './tests/csv_like/json.csvlike', ',', True))) == datargsing.datargsing_Complete
+    assert(type(cjc.json_like_csv_like_get_set('./tests/json_like/for_csv.jso', './tests/csv_like/json.csvlike', ',', True))) == datargsing.datargsing_Error
+    assert(type(cjc.json_like_csv_get('./tests/json_like/for_csv.jsonlike', True))) == tuple
+    assert(type(cjc.json_like_csv_get('./tests/json_like/for_csv.jso', True))) == datargsing.datargsing_Error
