@@ -11,4 +11,5 @@ setup(
     tests_require=['pytest==4.4.1'],
     test_suite='tests',
     url='https://github.com/LTHCTheMaster/Datargsing.git',
+    python_requires='>=3.8.8',
 )
