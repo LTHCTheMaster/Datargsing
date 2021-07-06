@@ -1,3 +1,9 @@
+"""
+Datargsing Main Module
+"""
+
+# -*- coding: utf-8 -*-
+
 from datargsing.datargsing_core import datargsing_Complete, datargsing_Error, JSON_Manage as jmC, CSV_Manage as cmC, CSV_JSON_Convert as cjcC
 from datargsing.datargsing_tools import datargsing_Failure, Datargsing_Engine
 from typing import Union, Type

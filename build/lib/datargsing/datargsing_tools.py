@@ -1,3 +1,9 @@
+"""
+Datargsing Tools Module
+"""
+
+# -*- coding: utf-8 -*-
+
 from typing import Union, Type
 
 class datargsing_Failure:

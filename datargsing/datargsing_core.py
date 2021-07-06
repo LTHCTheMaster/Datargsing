@@ -1,3 +1,9 @@
+"""
+Datargsing Core Module
+"""
+
+# -*- coding: utf-8 -*-
+
 from typing import Union
 
 class datargsing_Error:
