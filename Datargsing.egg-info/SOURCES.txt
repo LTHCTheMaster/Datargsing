@@ -10,3 +10,4 @@ Datargsing.egg-info/top_level.txt
 datargsing/__init__.py
 datargsing/datargsing.py
 datargsing/datargsing_core.py
+datargsing/datargsing_tools.py

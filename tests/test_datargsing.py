@@ -1,4 +1,5 @@
 from datargsing import datargsing_core
+from datargsing import datargsing_tools
 from datargsing import datargsing
 
 def test_datargsing():
@@ -6,6 +7,7 @@ def test_datargsing():
     cm = datargsing_core.CSV_Manage()
     cjc = datargsing_core.CSV_JSON_Convert()
     csv_json_all = datargsing.CSV_JSON_Manager()
+    dt = datargsing.Tools()
 
     #Core (Complex)
     assert type(jm.get_from_file('./tests/json/a.json', True)) == dict
@@ -113,3 +115,10 @@ def test_datargsing():
     assert(type(csv_json_all.write_csv_from_json('./tests/json_like/for_csv.jsonlike', './tests/csv_like/json.csvlike', ',', True))) == datargsing_core.datargsing_Complete
     assert(type(csv_json_all.write_csv_from_json('./tests/json_like/for_csv.jso', './tests/csv_like/json.csvlike', ',', True))) == datargsing_core.datargsing_Error
     assert(type(csv_json_all.get_csv_from_json('./tests/json_like/for_csv.jsonlike', True))) == tuple
+
+    #TOOLS
+    assert type(dt.location('Hello', 'no')) == datargsing_tools.datargsing_Failure
+    assert dt.location('aeiouae', 'ae') == [0,5]
+    assert dt.location('aeiouaeae', 'ae') == [0,5,7]
+    assert dt.location('aeiouaeaeiae', 'ae') == [0,5,7,10]
+    assert dt.location('Oupsi oupsa', 'Oupsi') == 0

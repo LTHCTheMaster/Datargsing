@@ -1,5 +1,6 @@
 from datargsing.datargsing_core import datargsing_Complete, datargsing_Error, JSON_Manage as jmC, CSV_Manage as cmC, CSV_JSON_Convert as cjcC
-from typing import Union
+from datargsing.datargsing_tools import datargsing_Failure, Datargsing_Engine
+from typing import Union, Type
 
 class CSV_JSON_Manager:
     """
@@ -20,6 +21,8 @@ class CSV_JSON_Manager:
           -> debug : (bool) [False] a debug state for Error Class
         => Return a (dict) object or a (datargsing_Error) object {For more details: view (datargsing_Error) info}
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.json'):
             return self.jm.get_from_file(path=path,debug=debug)
         else:
@@ -38,6 +41,9 @@ class CSV_JSON_Manager:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(separator) == str, "{ separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.csv'):
             return self.cm.get_from_file(path=path,separator=separator,debug=debug)
         else:
@@ -50,6 +56,8 @@ class CSV_JSON_Manager:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.json'):
             return self.jm.set_to_file(path=path,content=content,debug=debug)
         else:
@@ -69,6 +77,9 @@ class CSV_JSON_Manager:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(separator) == str, "{ separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.csv'):
             return self.cm.set_to_file(path=path,content=content,separator=separator,debug=debug)
         else:
@@ -83,6 +94,10 @@ class CSV_JSON_Manager:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path_csv.endswith('.csv'):
             if path_json.endswith('.json'):
                 return self.cjc.csv_json_get_set(path_csv=path_csv,path_json=path_json,csv_separator=csv_separator,debug=debug)
@@ -103,6 +118,10 @@ class CSV_JSON_Manager:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path_json.endswith('.json'):
             if path_csv.endswith('.csv'):
                 return self.cjc.json_csv_get_set(path_json=path_json,path_csv=path_csv,csv_separator=csv_separator,debug=debug)
@@ -122,6 +141,9 @@ class CSV_JSON_Manager:
           -> debug : (str) [False] a debug state for Error Class
         => Return a (dict) object or a (datargsing_Error) object {For more details: view (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path_csv.endswith('.csv'):
             return self.cjc.csv_json_get(path_csv=path_csv,csv_separator=csv_separator,debug=debug)
         else:
@@ -139,7 +161,34 @@ class CSV_JSON_Manager:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path_json.endswith('.json'):
             return self.cjc.json_csv_get(path_json=path_json,debug=debug)
         else:
             return self.cjc.json_like_csv_get(path_json=path_json,debug=debug)
+
+class Tools:
+    """
+    Datargsing Tools Class
+    """
+    def __init__(self):
+        """
+        Datargsing Tools Class
+        """
+        self.de = Datargsing_Engine()
+    
+    def location(self, main: str, wanted: str) -> Union[int, "list[Type[int]]", datargsing_Failure]:
+        """
+        Return the single index (or all indexes) of {wanted} in {main}
+        """
+        assert type(main) == str, "{ main } must be a str"
+        assert type(wanted) == str, "{ wanted } must be a str"
+        temp = self.de.locate_all(main=main, wanted=wanted)
+        if type(temp) == datargsing_Failure:
+            return datargsing_Failure()
+        else:
+            if len(temp) > 1:
+                return temp
+            else:
+                return temp[0]

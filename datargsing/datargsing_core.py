@@ -12,6 +12,8 @@ class datargsing_Error:
           -> error_content : (str) error message
           -> debug : (bool) [False] if is False, stop the program
         """
+        assert type(error_content) == str, "{ error_content } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         print('\n'+error_content+'\n')
         if not debug:
             exit()
@@ -26,6 +28,7 @@ class datargsing_Complete:
         Datargsing Completion Class:
           -> debug : (bool) [False] if is True, print a simple message
         """
+        assert type(debug) == bool, "{ debug } must be a bool"
         if debug:
             print('\n Complete \n')
 
@@ -46,6 +49,8 @@ class JSON_Manage:
           -> debug : (bool) [False] a debug state for Error Class
         => Return a (dict) object or a (datargsing_Error) object {For more details: view (datargsing_Error) info}
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.json'):
             try:
                 return eval(open(file=path, mode='r').read().replace('true', 'True').replace('false', 'False'))
@@ -61,6 +66,8 @@ class JSON_Manage:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.json'):
             try:
                 cur = open(file=path, mode='w')
@@ -85,6 +92,8 @@ class JSON_Manage:
           -> debug : (bool) [False] a debug state for Error Class
         => Return a (dict) object or a (datargsing_Error) object {For more details: view (datargsing_Error) info}
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         try:
             temp = eval(open(file=path, mode='r').read().replace('true', 'True').replace('false', 'False'))
             if type(temp) == dict:
@@ -101,6 +110,8 @@ class JSON_Manage:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         try:
             cur = open(file=path, mode='w')
             cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
@@ -138,6 +149,9 @@ class CSV_Manage:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(separator) == str, "{ separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.csv'):
             try:
                 file = open(file=path, mode='r')
@@ -164,6 +178,9 @@ class CSV_Manage:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(separator) == str, "{ separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         if path.endswith('.csv'):
             try:
                 descriptors = separator.join(content[0])
@@ -202,6 +219,9 @@ class CSV_Manage:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(separator) == str, "{ separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         try:
             file = open(file=path, mode='r')
             descriptors = file.readline().rstrip().split(separator)
@@ -225,6 +245,9 @@ class CSV_Manage:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path) == str, "{ path } must be a str"
+        assert type(separator) == str, "{ separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         try:
             descriptors = separator.join(content[0])
             cur = open(file=path, mode='w')
@@ -267,6 +290,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         csv_content = self.cm.get_from_file(path=path_csv, separator=csv_separator, debug=debug)
         if type(csv_content) == tuple:
             json_format = {}
@@ -290,6 +317,9 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class
         => Return a (dict) object or a (datargsing_Error) object {For more details: view (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         csv_content = self.cm.get_from_file(path=path_csv, separator=csv_separator, debug=debug)
         if type(csv_content) == tuple:
             json_format = {}
@@ -310,6 +340,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         json_content = self.jm.get_from_file(path=path_json, debug=debug)
         if type(json_content) == dict:
             descriptors = []
@@ -356,6 +390,8 @@ class CSV_JSON_Convert:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         json_content = self.jm.get_from_file(path=path_json, debug=debug)
         if type(json_content) == dict:
             descriptors = []
@@ -395,6 +431,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         csv_content = self.cm.get_from_file_like_csv(path=path_csv, separator=csv_separator, debug=debug)
         if type(csv_content) == tuple:
             json_format = {}
@@ -419,6 +459,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         csv_content = self.cm.get_from_file(path=path_csv, separator=csv_separator, debug=debug)
         if type(csv_content) == tuple:
             json_format = {}
@@ -443,6 +487,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         csv_content = self.cm.get_from_file_like_csv(path=path_csv, separator=csv_separator, debug=debug)
         if type(csv_content) == tuple:
             json_format = {}
@@ -466,6 +514,9 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class
         => Return a (dict) object or a (datargsing_Error) object {For more details: view (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         csv_content = self.cm.get_from_file_like_csv(path=path_csv, separator=csv_separator, debug=debug)
         if type(csv_content) == tuple:
             json_format = {}
@@ -486,6 +537,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         json_content = self.jm.get_from_file_like_json(path=path_json, debug=debug)
         if type(json_content) == dict:
             descriptors = []
@@ -529,6 +584,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         json_content = self.jm.get_from_file(path=path_json, debug=debug)
         if type(json_content) == dict:
             descriptors = []
@@ -572,6 +631,10 @@ class CSV_JSON_Convert:
           -> debug : (str) [False] a debug state for Error Class and Completion Class
         => Return a (datargsing_Complete) object or a (datargsing_Error) object {For more details: view (datargsing_Complete) info and/or (datargsing_Error) info}
         """
+        assert type(path_csv) == str, "{ path_csv } must be a str"
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(csv_separator) == str, "{ csv_separator } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         json_content = self.jm.get_from_file_like_json(path=path_json, debug=debug)
         if type(json_content) == dict:
             descriptors = []
@@ -618,6 +681,8 @@ class CSV_JSON_Convert:
           -> Index 0 : a list with descriptors/entries
           -> Index 1 : a list of (sub-)list, each (sub-)list is a line under descriptors/entries
         """
+        assert type(path_json) == str, "{ path_json } must be a str"
+        assert type(debug) == bool, "{ debug } must be a bool"
         json_content = self.jm.get_from_file_like_json(path=path_json, debug=debug)
         if type(json_content) == dict:
             descriptors = []
