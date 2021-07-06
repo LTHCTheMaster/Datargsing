@@ -1,4 +1,6 @@
 README.md
+icon.png
+pyproject.toml
 setup.cfg
 setup.py
 Datargsing.egg-info/PKG-INFO

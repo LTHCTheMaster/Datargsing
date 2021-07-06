@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./icon.png">
+<img src="https://github.com/LTHCTheMaster/Datargsing/blob/master/icon.png">
 
 # Datargsing
 
