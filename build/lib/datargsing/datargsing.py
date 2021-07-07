@@ -198,3 +198,17 @@ class Tools:
                 return temp
             else:
                 return temp[0]
+    
+    def count(self, main: str, wanted: str) -> int:
+        """
+        Return the number of {wanted} in {main}
+        """
+        assert type(main) == str, "{ main } must be a str"
+        assert type(wanted) == str, "{ wanted } must be a str"
+        temp = self.location(main=main,wanted=wanted)
+        if type(temp) == datargsing_Failure:
+            return 0
+        elif type(temp) == int:
+            return 1
+        else:
+            return len(temp)

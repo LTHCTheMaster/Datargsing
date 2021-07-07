@@ -122,3 +122,9 @@ def test_datargsing():
     assert dt.location('aeiouaeae', 'ae') == [0,5,7]
     assert dt.location('aeiouaeaeiae', 'ae') == [0,5,7,10]
     assert dt.location('Oupsi oupsa', 'Oupsi') == 0
+    
+    assert dt.count('Hello', 'no') == 0
+    assert dt.count('aeiouae', 'ae') == 2
+    assert dt.count('aeiouaeae', 'ae') == 3
+    assert dt.count('aeiouaeaeiae', 'ae') == 4
+    assert dt.count('Oupsi oupsa', 'Oupsi') == 1

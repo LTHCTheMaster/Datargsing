@@ -48,7 +48,7 @@ class Datargsing_Engine:
         out: "list[Type[int]]" = []
         finished = False
         while not finished:
-            temp = self.locate(current, wanted)
+            temp = self.locate(main=current, wanted=wanted)
             if type(temp) == datargsing_Failure:
                 finished = True
             else:
