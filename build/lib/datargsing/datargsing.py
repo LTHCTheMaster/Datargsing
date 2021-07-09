@@ -7,6 +7,7 @@ Datargsing Main Module
 from datargsing.datargsing_core import datargsing_Complete, datargsing_Error, JSON_Manage as jmC, CSV_Manage as cmC, CSV_JSON_Convert as cjcC
 from datargsing.datargsing_tools import datargsing_Failure, Datargsing_Engine
 from typing import Union, Type
+from random import randint
 
 class CSV_JSON_Manager:
     """
@@ -212,3 +213,17 @@ class Tools:
             return 1
         else:
             return len(temp)
+    
+    def get_one_random_location(self, main: str, wanted: str) -> Union[int, datargsing_Failure]:
+        """
+        Return one random location of {wanted} in {main}
+        """
+        assert type(main) == str, "{ main } must be a str"
+        assert type(wanted) == str, "{ wanted } must be a str"
+        temp = self.location(main=main,wanted=wanted)
+        if type(temp) == datargsing_Failure:
+            return datargsing_Failure()
+        elif type(temp) == int:
+            return temp
+        else:
+            return temp[randint(0,len(temp)-1)]

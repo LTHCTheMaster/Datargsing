@@ -128,3 +128,11 @@ def test_datargsing():
     assert dt.count('aeiouaeae', 'ae') == 3
     assert dt.count('aeiouaeaeiae', 'ae') == 4
     assert dt.count('Oupsi oupsa', 'Oupsi') == 1
+
+    assert dt.get_one_random_location('aeiouae', 'ae') in [0,5]
+    assert dt.get_one_random_location('aeiouae', 'ae') in [0,5]
+    assert dt.get_one_random_location('aeiouae', 'ae') in [0,5]
+    assert dt.get_one_random_location('aeiouae', 'ae') in [0,5]
+    assert dt.get_one_random_location('aeiouae', 'ae') in [0,5]
+    assert dt.get_one_random_location('aeiouae', 'ae') in [0,5]
+    assert dt.get_one_random_location('aeiouae', 'ae') in [0,5]
