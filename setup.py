@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name='Datargsing',
     packages=find_packages(include=['datargsing'], exclude=['tests']),
-    version='0.2.3',
+    version='0.2.4',
     description='A Data management and manipulation library',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -21,5 +21,5 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
     ],
-    python_requires='>=3.8.8',
+    python_requires='>=3.9.6',
 )
