@@ -1,10 +1,8 @@
+# -*- coding: utf-8 -*-
+
 """
 Datargsing Core Module
 """
-
-# -*- coding: utf-8 -*-
-
-from typing import Union
 
 class datargsing_Error:
     """
@@ -48,7 +46,7 @@ class JSON_Manage:
         """
         pass
     
-    def get_from_file(self, path: str, debug: bool = False) -> Union[dict, datargsing_Error]:
+    def get_from_file(self, path: str, debug: bool = False) -> dict | datargsing_Error:
         """
         Get From A JSON File:
           -> path : (str) the path of the .json file
@@ -65,7 +63,7 @@ class JSON_Manage:
         else:
             return datargsing_Error(error_content='The file isn\'t a JSON file (extension check)', debug=debug)
     
-    def set_to_file(self, path: str, content: dict, debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def set_to_file(self, path: str, content: dict, debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Set To A JSON File:
           -> path : (str) the path of the .json output file
@@ -91,7 +89,7 @@ class JSON_Manage:
         else:
             return datargsing_Error(error_content='The file isn\'t a JSON file (extension check)', debug=debug)
     
-    def get_from_file_like_json(self, path: str, debug: bool = False) -> Union[dict, datargsing_Error]:
+    def get_from_file_like_json(self, path: str, debug: bool = False) -> dict | datargsing_Error:
         """
         Get From A JSON Formated/Like File:
           -> path : (str) the path of the json formated/like file
@@ -109,7 +107,7 @@ class JSON_Manage:
         except:
             return datargsing_Error(error_content='The file doesn\'t exist', debug=debug)
     
-    def set_to_file_like_json(self, path: str, content: dict, debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def set_to_file_like_json(self, path: str, content: dict, debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Set To A JSON Formated/Like File:
           -> path : (str) the path of the json formated/like output file
@@ -142,7 +140,7 @@ class CSV_Manage:
         """
         pass
 
-    def get_from_file(self, path: str, separator: str = ',', debug: bool = False) -> Union[tuple, datargsing_Error]:
+    def get_from_file(self, path: str, separator: str = ',', debug: bool = False) -> tuple | datargsing_Error:
         """
         Get From A CSV File:
           -> path : (str) the path of the .csv file
@@ -170,7 +168,7 @@ class CSV_Manage:
         else:
             return datargsing_Error(error_content='The file isn\'t a CSV file (extension check)', debug=debug)
     
-    def set_to_file(self, path: str, content: tuple, separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def set_to_file(self, path: str, content: tuple, separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Set To A CSV File:
           -> path : (str) the path of the .csv output file
@@ -212,7 +210,7 @@ class CSV_Manage:
         else:
             return datargsing_Error(error_content='The file isn\'t a CSV file (extension check)', debug=debug)
         
-    def get_from_file_like_csv(self, path: str, separator: str = ',', debug: bool = False) -> Union[tuple, datargsing_Error]:
+    def get_from_file_like_csv(self, path: str, separator: str = ',', debug: bool = False) -> tuple | datargsing_Error:
         """
         Get From A CSV Formated/Like File:
           -> path : (str) the path of the csv formated/like file
@@ -237,7 +235,7 @@ class CSV_Manage:
         except:
             return datargsing_Error(error_content='The file doesn\'t exist', debug=debug)
     
-    def set_to_file_like_csv(self, path: str, content: tuple, separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def set_to_file_like_csv(self, path: str, content: tuple, separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Set To A CSV Formated/Like File:
           -> path : (str) the path of the csv formated/like output file
@@ -287,7 +285,7 @@ class CSV_JSON_Convert:
         self.jm = JSON_Manage()
         self.cm = CSV_Manage()
 
-    def csv_json_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def csv_json_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The JSON Formated CSV Content From A CSV File To A JSON File:
           -> path_csv : (str) the path of the .csv file
@@ -315,7 +313,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def csv_json_get(self, path_csv: str, csv_separator: str = ',', debug: bool = False) -> Union[dict, datargsing_Error]:
+    def csv_json_get(self, path_csv: str, csv_separator: str = ',', debug: bool = False) -> dict | datargsing_Error:
         """
         Get The JSON Formated CSV Content From A CSV File:
           -> path_csv : (str) the path of the .csv file
@@ -337,7 +335,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def json_csv_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def json_csv_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The CSV Formated JSON Content From A JSON File To A CSV File:
           -> path_json : (str) the path of the .json file
@@ -384,7 +382,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def json_csv_get(self, path_json: str,  debug: bool = False) -> Union[tuple, datargsing_Error]:
+    def json_csv_get(self, path_json: str,  debug: bool = False) -> tuple | datargsing_Error:
         """
         Get The CSV Formated JSON Content From A JSON File:
           -> path_json : (str) the path of the .json file
@@ -428,7 +426,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def csv_like_json_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def csv_like_json_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The JSON Formated CSV Content From A CSV Formated/Like File To A JSON File:
           -> path_csv : (str) the path of the csv formated/like file
@@ -456,7 +454,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def csv_json_like_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def csv_json_like_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The JSON Formated CSV Content From A CSV File To A JSON Formated/Like File:
           -> path_csv : (str) the path of the .csv file
@@ -484,7 +482,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def csv_like_json_like_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def csv_like_json_like_get_set(self, path_csv: str, path_json: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The JSON Formated CSV Content From A CSV Formated/Like File To A JSON Formated/Like File:
           -> path_csv : (str) the path of the csv formated/like file
@@ -512,7 +510,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def csv_like_json_get(self, path_csv: str, csv_separator: str = ',', debug: bool = False) -> Union[dict, datargsing_Error]:
+    def csv_like_json_get(self, path_csv: str, csv_separator: str = ',', debug: bool = False) -> dict | datargsing_Error:
         """
         Get The JSON Formated CSV Content From A CSV Formated/Like File:
           -> path_csv : (str) the path of the csv formated/like file
@@ -534,7 +532,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def json_like_csv_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def json_like_csv_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The CSV Formated JSON Content From A JSON Formated/Like File To A CSV File:
           -> path_json : (str) the path of the json formated/like file
@@ -581,7 +579,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def json_csv_like_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def json_csv_like_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The CSV Formated JSON Content From A JSON File To A CSV Formated/Like File:
           -> path_json : (str) the path of the .json file
@@ -628,7 +626,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def json_like_csv_like_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> Union[datargsing_Complete, datargsing_Error]:
+    def json_like_csv_like_get_set(self, path_json: str, path_csv: str, csv_separator: str = ',', debug: bool = False) -> datargsing_Complete | datargsing_Error:
         """
         Write The CSV Formated JSON Content From A JSON Formated/Like File To A CSV Formated/Like File:
           -> path_json : (str) the path of the json formated/like file
@@ -675,7 +673,7 @@ class CSV_JSON_Convert:
         else:
             return datargsing_Error('Cannot read correct parameters', debug=debug)
     
-    def json_like_csv_get(self, path_json: str,  debug: bool = False) -> Union[tuple, datargsing_Error]:
+    def json_like_csv_get(self, path_json: str,  debug: bool = False) -> tuple | datargsing_Error:
         """
         Get The CSV Formated JSON Content From A JSON Formated/Like File:
           -> path_json : (str) the path of the json formated/like file

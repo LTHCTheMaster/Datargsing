@@ -1,10 +1,8 @@
+# -*- coding: utf-8 -*-
+
 """
 Datargsing Tools Module
 """
-
-# -*- coding: utf-8 -*-
-
-from typing import Union, Type
 
 class datargsing_Failure:
     """
@@ -26,7 +24,7 @@ class Datargsing_Engine:
         """
         pass
     
-    def locate(self, main: str, wanted: str) -> Union[int, datargsing_Failure]:
+    def locate(self, main: str, wanted: str) -> int | datargsing_Failure:
         """
         Return the index of the first {wanted} in {main}
         """
@@ -37,7 +35,7 @@ class Datargsing_Engine:
         else:
             return datargsing_Failure()
     
-    def locate_all(self, main: str, wanted: str) -> Union["list[Type[int]]", datargsing_Failure]:
+    def locate_all(self, main: str, wanted: str) -> list[int] | datargsing_Failure:
         """
         Return all indexes of {wanted} in {main}
         """
@@ -45,7 +43,7 @@ class Datargsing_Engine:
         assert type(wanted) == str, "{ wanted } must be a str"
         current = main
         upd = 0
-        out: "list[Type[int]]" = []
+        out: list[int] = []
         finished = False
         while not finished:
             temp = self.locate(main=current, wanted=wanted)
