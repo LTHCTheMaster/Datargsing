@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: Datargsing
-Version: 0.2.7
+Version: 0.2.8
 Summary: A Data management and manipulation library
 Home-page: https://github.com/LTHCTheMaster/Datargsing
 Author: LTHC The Master (CHOSSY Lucas)
@@ -14,7 +14,10 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 
 <div align="center">
+
 <img src="https://github.com/LTHCTheMaster/Datargsing/blob/master/icon.png">
+
+</div>
 
 # Datargsing
 
@@ -27,5 +30,7 @@ Datargsing is a data management and manipulation Python library which is current
 ## Why this library is good?
 
 This Python library has classes and methods with a detailled documentation directly in you ide (if it supports documentation) and this library is really simple and logical
+
+</div>
 
 
