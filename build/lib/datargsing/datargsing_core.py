@@ -20,7 +20,7 @@ class datargsing_Error:
 		assert type(debug) == bool, "{ debug } must be a bool"
 		print('\n'+error_content+'\n')
 		if not debug:
-			exit()
+			raise Exception(f"Datargsing: {error_content}")
 
 class datargsing_Complete:
 	"""
