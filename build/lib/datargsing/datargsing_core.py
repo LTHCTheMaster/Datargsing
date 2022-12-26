@@ -75,13 +75,45 @@ class JSON_Manage:
 		if path.endswith('.json'):
 			try:
 				cur = open(file=path, mode='w', encoding="utf-8")
-				cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+				origin = str(content).replace('True', 'true').replace('False', 'false')
+				counter = 0
+				tmp = ""
+				for char in origin:
+					if char == '"':
+						counter += 1
+						counter %= 2
+					if char == "'" and counter == 1:
+						tmp += "'"
+					elif char == "'":
+						tmp += '"'
+					else:
+						tmp += char
+				cur.write(tmp)
+				del origin
+				del counter
+				del tmp
 				cur.close()
 				return datargsing_Complete(debug=debug)
 			except:
 				try:
 					cur = open(file=path, mode='xw', encoding="utf-8")
-					cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+					origin = str(content).replace('True', 'true').replace('False', 'false')
+					counter = 0
+					tmp = ""
+					for char in origin:
+						if char == '"':
+							counter += 1
+							counter %= 2
+						if char == "'" and counter == 1:
+							tmp += "'"
+						elif char == "'":
+							tmp += '"'
+						else:
+							tmp += char
+					cur.write(tmp)
+					del origin
+					del counter
+					del tmp
 					cur.close()
 					return datargsing_Complete(debug=debug)
 				except:
@@ -118,13 +150,45 @@ class JSON_Manage:
 		assert type(debug) == bool, "{ debug } must be a bool"
 		try:
 			cur = open(file=path, mode='w', encoding="utf-8")
-			cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+			origin = str(content).replace('True', 'true').replace('False', 'false')
+			counter = 0
+			tmp = ""
+			for char in origin:
+				if char == '"':
+					counter += 1
+					counter %= 2
+				if char == "'" and counter == 1:
+					tmp += "'"
+				elif char == "'":
+					tmp += '"'
+				else:
+					tmp += char
+			cur.write(tmp)
+			del origin
+			del counter
+			del tmp
 			cur.close()
 			return datargsing_Complete(debug=debug)
 		except:
 			try:
 				cur = open(file=path, mode='xw', encoding="utf-8")
-				cur.write(str(content).replace('True', 'true').replace('False', 'false').replace("'", '"'))
+				origin = str(content).replace('True', 'true').replace('False', 'false')
+				counter = 0
+				tmp = ""
+				for char in origin:
+					if char == '"':
+						counter += 1
+						counter %= 2
+					if char == "'" and counter == 1:
+						tmp += "'"
+					elif char == "'":
+						tmp += '"'
+					else:
+						tmp += char
+				cur.write(tmp)
+				del origin
+				del counter
+				del tmp
 				cur.close()
 				return datargsing_Complete(debug=debug)
 			except:
