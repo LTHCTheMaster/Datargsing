@@ -1,5 +1,6 @@
 from datargsing import datargsing_core
 from datargsing import datargsing
+from datargsing import datargsing_version
 
 def test_datargsing():
 	jm = datargsing_core.JSON_Manage()
@@ -7,8 +8,9 @@ def test_datargsing():
 	cjc = datargsing_core.CSV_JSON_Convert()
 	csv_json_all = datargsing.CSV_JSON_Manager()
 	tools = datargsing.Tools()
+	__version__ = datargsing_version.__version__
 
-	#Core (Complex)
+	# Core (Complex)
 	assert type(jm.get_from_file('./tests/json/a.json', True)) == dict
 	assert type(jm.get_from_file('b.json', True)) == datargsing_core.datargsing_Error
 	assert type(jm.get_from_file('a.lk', True)) == datargsing_core.datargsing_Error
@@ -65,7 +67,7 @@ def test_datargsing():
 	assert(type(cjc.json_like_csv_get('./tests/json_like/for_csv.jsonlike', True))) == tuple
 	assert(type(cjc.json_like_csv_get('./tests/json_like/for_csv.jso', True))) == datargsing_core.datargsing_Error
 
-	#Default (Simple)
+	# Default (Simple)
 	assert type(csv_json_all.get_from_json('./tests/json/a.json', True)) == dict
 	assert type(csv_json_all.get_from_json('b.json', True)) == datargsing_core.datargsing_Error
 	assert type(csv_json_all.get_from_json('a.lk', True)) == datargsing_core.datargsing_Error
@@ -119,3 +121,5 @@ def test_datargsing():
 	assert tools.count("aabbaca", "aa") == 1
 	assert tools.location("aabcchuiccllm", "cc") == [3,8]
 	assert tools.get_one_random_location("aabcchuiccllm", "cc") in (3, 8)
+	# Version Check
+	assert __version__ == "0.2.12"

@@ -7,6 +7,7 @@ Datargsing Main Module
 from datargsing.datargsing_core import datargsing_Complete, datargsing_Error, JSON_Manage as jmC, CSV_Manage as cmC, CSV_JSON_Convert as cjcC
 from datargsing.datargsing_tools import datargsing_Failure, Datargsing_Engine
 from random import randint
+from datargsing.datargsing_version import __version__
 
 class CSV_JSON_Manager:
 	"""

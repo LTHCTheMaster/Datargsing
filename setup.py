@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name='Datargsing',
     packages=find_packages(include=['datargsing']),
-    version='0.2.11',
+    version='0.2.12',
     description='A Data management and manipulation library',
     long_description=long_description,
     long_description_content_type="text/markdown",
