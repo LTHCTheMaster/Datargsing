@@ -1,2 +1,2 @@
-from importlib.metadata import PackageNotFoundError, version
+from importlib.metadata import version
 __version__ = version("datargsing")
