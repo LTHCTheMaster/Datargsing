@@ -19,14 +19,8 @@ class datargsing_Error:
 		assert type(error_content) == str, "{ error_content } must be a str"
 		assert type(debug) == bool, "{ debug } must be a bool"
 		print('\n'+error_content+'\n')
-		try:
-			if not debug:
-				raise Exception(f"Datargsing: {error_content}")
-		except:
-			try:
-				exit()
-			except:
-				a = 1 / 0
+		if not debug:
+			raise Exception(f"Datargsing: {error_content}")
 
 class datargsing_Complete:
 	"""

@@ -122,4 +122,4 @@ def test_datargsing():
 	assert tools.location("aabcchuiccllm", "cc") == [3,8]
 	assert tools.get_one_random_location("aabcchuiccllm", "cc") in (3, 8)
 	# Version Check
-	assert __version__ == "0.2.13"
+	assert __version__ == "0.2.14"
