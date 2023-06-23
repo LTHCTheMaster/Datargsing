@@ -57,7 +57,7 @@ class JSON_Manage:
 		assert type(debug) == bool, "{ debug } must be a bool"
 		if path.endswith('.json'):
 			try:
-				return eval(open(file=path, mode='r', encoding="utf-8").read().replace('true', 'True').replace('false', 'False'))
+				return eval(open(path, 'r', encoding="utf-8").read().replace('true', 'True').replace('false', 'False'))
 			except:
 				return datargsing_Error(error_content='The file doesn\'t exist', debug=debug)
 		else:
@@ -74,7 +74,7 @@ class JSON_Manage:
 		assert type(debug) == bool, "{ debug } must be a bool"
 		if path.endswith('.json'):
 			try:
-				cur = open(file=path, mode='w', encoding="utf-8")
+				cur = open(path, 'w', encoding="utf-8")
 				origin = str(content).replace('True', 'true').replace('False', 'false')
 				counter = 0
 				tmp = ""
@@ -96,7 +96,7 @@ class JSON_Manage:
 				return datargsing_Complete(debug=debug)
 			except:
 				try:
-					cur = open(file=path, mode='xw', encoding="utf-8")
+					cur = open(path, 'xw', encoding="utf-8")
 					origin = str(content).replace('True', 'true').replace('False', 'false')
 					counter = 0
 					tmp = ""
@@ -131,7 +131,7 @@ class JSON_Manage:
 		assert type(path) == str, "{ path } must be a str"
 		assert type(debug) == bool, "{ debug } must be a bool"
 		try:
-			temp = eval(open(file=path, mode='r', encoding="utf-8").read().replace('true', 'True').replace('false', 'False'))
+			temp = eval(open(path, 'r', encoding="utf-8").read().replace('true', 'True').replace('false', 'False'))
 			if type(temp) == dict:
 				return temp
 			else:
@@ -149,7 +149,7 @@ class JSON_Manage:
 		assert type(path) == str, "{ path } must be a str"
 		assert type(debug) == bool, "{ debug } must be a bool"
 		try:
-			cur = open(file=path, mode='w', encoding="utf-8")
+			cur = open(path, 'w', encoding="utf-8")
 			origin = str(content).replace('True', 'true').replace('False', 'false')
 			counter = 0
 			tmp = ""
@@ -171,7 +171,7 @@ class JSON_Manage:
 			return datargsing_Complete(debug=debug)
 		except:
 			try:
-				cur = open(file=path, mode='xw', encoding="utf-8")
+				cur = open(path, 'xw', encoding="utf-8")
 				origin = str(content).replace('True', 'true').replace('False', 'false')
 				counter = 0
 				tmp = ""
@@ -222,7 +222,7 @@ class CSV_Manage:
 		assert type(debug) == bool, "{ debug } must be a bool"
 		if path.endswith('.csv'):
 			try:
-				file = open(file=path, mode='r', encoding="utf-8")
+				file = open(path, 'r', encoding="utf-8")
 				descriptors = file.readline().rstrip().split(separator)
 				values = [i.rstrip().split(separator) for i in file.readlines()]
 				content = (descriptors, values)
@@ -252,7 +252,7 @@ class CSV_Manage:
 		if path.endswith('.csv'):
 			try:
 				descriptors = separator.join(content[0])
-				cur = open(file=path, mode='w', encoding="utf-8")
+				cur = open(path, 'w', encoding="utf-8")
 				cur.write(descriptors)
 				for i in content[1]:
 					values_line = '\n' + separator.join(i)
@@ -262,7 +262,7 @@ class CSV_Manage:
 			except:
 				try:
 					descriptors = separator.join(content[0])
-					cur = open(file=path, mode='w', encoding="utf-8")
+					cur = open(path, 'w', encoding="utf-8")
 					cur.write(descriptors)
 					for i in content[1]:
 						values_line = '\n' + separator.join(i)
@@ -291,7 +291,7 @@ class CSV_Manage:
 		assert type(separator) == str, "{ separator } must be a str"
 		assert type(debug) == bool, "{ debug } must be a bool"
 		try:
-			file = open(file=path, mode='r', encoding="utf-8")
+			file = open(path, 'r', encoding="utf-8")
 			descriptors = file.readline().rstrip().split(separator)
 			values = [i.rstrip().split(separator) for i in file.readlines()]
 			content = (descriptors, values)
@@ -318,7 +318,7 @@ class CSV_Manage:
 		assert type(debug) == bool, "{ debug } must be a bool"
 		try:
 			descriptors = separator.join(content[0])
-			cur = open(file=path, mode='w', encoding="utf-8")
+			cur = open(path, 'w', encoding="utf-8")
 			cur.write(descriptors)
 			for i in content[1]:
 				values_line = '\n' + separator.join(i)
@@ -328,7 +328,7 @@ class CSV_Manage:
 		except:
 			try:
 				descriptors = separator.join(content[0])
-				cur = open(file=path, mode='w', encoding="utf-8")
+				cur = open(path, 'w', encoding="utf-8")
 				cur.write(descriptors)
 				for i in content[1]:
 					values_line = '\n' + separator.join(i)

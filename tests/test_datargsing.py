@@ -121,5 +121,7 @@ def test_datargsing():
 	assert tools.count("aabbaca", "aa") == 1
 	assert tools.location("aabcchuiccllm", "cc") == [3,8]
 	assert tools.get_one_random_location("aabcchuiccllm", "cc") in (3, 8)
+	# Folder with a dot
+	assert(csv_json_all.get_from_json('./tests/test.test.test/json.json', True))["key"] == "key" # Soft Test
 	# Version Check
-	assert __version__ == "0.2.14"
+	assert __version__ == "0.2.15"
